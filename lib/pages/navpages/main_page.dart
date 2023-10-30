@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:travelappwithbloc/pages/navpages/bar_item_page.dart';
 import 'package:travelappwithbloc/pages/navpages/homepage.dart';
+import 'package:travelappwithbloc/pages/navpages/my_page.dart';
 import 'package:travelappwithbloc/pages/navpages/search_page.dart';
-import 'package:travelappwithbloc/pages/welcome_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,12 +14,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List pages = [
-    Homepage(),
-    WelcomePage(),
-    BarItemPage(),
-    SearchPage(),
-  ];
+  final List pages = [Homepage(), BarItemPage(), SearchPage(), MyPage()];
   int currentIndex = 0;
   void ontap(int index) {
     setState(() {
@@ -35,11 +30,11 @@ class _MainPageState extends State<MainPage> {
         unselectedFontSize: 0,
         selectedFontSize: 0,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[300],
         onTap: ontap,
         currentIndex: currentIndex,
         selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey.withOpacity(0.3),
+        unselectedItemColor: Colors.grey.withOpacity(0.9),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: [

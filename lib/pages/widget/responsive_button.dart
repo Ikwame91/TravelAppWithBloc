@@ -16,23 +16,14 @@ class ResponsiveButton extends StatelessWidget {
       height: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: Colors.blue.shade300,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_forward_ios),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_forward_ios),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_forward_ios),
-          ),
+          Icon(Icons.arrow_forward_ios),
+          Icon(Icons.arrow_forward_ios),
+          Icon(Icons.arrow_forward_ios),
         ],
       ),
     );

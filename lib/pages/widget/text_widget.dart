@@ -16,9 +16,10 @@ class AppText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
+        letterSpacing: 0.7,
         color: color,
         fontSize: fontSize,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w700,
       ),
     );
   }

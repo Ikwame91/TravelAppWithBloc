@@ -18,6 +18,21 @@ class _WelcomePageState extends State<WelcomePage> {
     'assets/images/man.jpg',
     'assets/images/pretty.jpg',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Precache images
+    for (var image in _welcomeImages) {
+      precacheImage(AssetImage(image), context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +58,11 @@ class _WelcomePageState extends State<WelcomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       LargeText(text: 'Trips'),
+                      SizedBox(
+                        height: 9,
+                      ),
                       AppText(
+                        color: Colors.black,
                         text: 'Mountain, Beach, City',
                         fontSize: 30,
                       ),
@@ -53,6 +72,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       SizedBox(
                         width: 250,
                         child: AppText(
+                            fontSize: 17,
+                            color: Colors.black,
                             text:
                                 'Mountain Hives give you an Incredible Sense Of freedom along with vast enjoyment'),
                       ),
@@ -60,7 +81,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         height: 40,
                       ),
                       ResponsiveButton(
-                        width: 120,
+                        width: 110,
                       )
                     ],
                   ),
