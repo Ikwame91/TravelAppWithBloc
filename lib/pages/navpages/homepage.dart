@@ -13,7 +13,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
-  var images = {
+  Map<String, String> images = {
     "glassesandphone.jpg": "Phones",
     "christmas.jpg": "Christmas",
     "white.jpg": "Sea Food",
