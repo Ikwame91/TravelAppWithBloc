@@ -12,11 +12,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
-  final List<String> _images = [
-    'assets/images/man.jpg',
-    'assets/images/nicebuilding.jpg',
-    'assets/images/pretty.jpg',
-  ];
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -36,7 +31,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                 children: [
                   Icon(
                     Icons.menu,
-                    size: 30,
+                    size: 35,
                     color: Colors.black,
                   ),
                   Container(
@@ -46,6 +41,10 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey.withOpacity(0.3),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/travelllers.jpg'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ],
@@ -64,42 +63,82 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
           ),
           Container(
             height: 100,
-            color: Colors.blue,
             child: Align(
-              alignment: Alignment.topCenter,
+              alignment: Alignment.centerLeft,
               child: TabBar(
-                labelPadding: EdgeInsets.only(left: 60, right: 60),
+                labelStyle:
+                    TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                labelPadding:
+                    EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 controller: _tabController,
-                unselectedLabelColor: Colors.grey,
+                unselectedLabelColor: Color(0xFF9E9E9E),
                 isScrollable: true,
                 indicatorSize: TabBarIndicatorSize.label,
-                indicator: CircleTabIndicator(color: Colors.black, radius: 6),
+                indicator: CircleTabIndicator(color: Colors.black, radius: 7),
                 tabs: [
                   Text('PEOPLE'),
-                  Text('PEOPLE'),
-                  Text('PEOPLE'),
+                  Text('INSPIRATION'),
+                  Text('EMOTIONS'),
                 ],
               ),
             ),
           ),
           Container(
-            height: 90,
+            padding: EdgeInsets.only(left: 20),
+            height: 300,
             width: double.maxFinite,
             child: TabBarView(
               controller: _tabController,
               children: [
-                Text('It\'s cloudy here'),
-                Text('It\'s cloudy here'),
-                Text('It\'s cloudy here'),
+                TabContent(imagePath: 'assets/images/man.jpg'),
+                TabContent(imagePath: 'assets/images/beautifulroom.jpg'),
+                TabContent(imagePath: 'assets/images/nicebuilding.jpg'),
               ],
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: LargeText(
+                  text: 'Explore more',
+                  fontSize: 24,
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
   }
 }
 
+class TabContent extends StatelessWidget {
+  final String imagePath;
+
+  const TabContent({Key? key, required this.imagePath}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      height: 300,
+      margin: EdgeInsets.only(right: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
 class CircleTabIndicator extends Decoration {
   final Color color;
   double radius;
