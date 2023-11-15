@@ -14,7 +14,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List pages = [Homepage(), BarItemPage(), SearchPage(), MyPage()];
+  final List pages = [
+    Homepage(),
+    BarItemPage(),
+    SearchPage(),
+    MyPage(),
+  ];
   int currentIndex = 0;
   void ontap(int index) {
     setState(() {

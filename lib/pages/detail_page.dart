@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:travelappwithbloc/pages/widget/app_text.dart';
+import 'package:travelappwithbloc/pages/widget/detail_page_container.dart';
+import 'package:travelappwithbloc/pages/widget/responsive_button.dart';
 import 'package:travelappwithbloc/pages/widget/text_widget.dart';
 
 class DetailPage extends StatefulWidget {
@@ -12,10 +14,12 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  int rating = 3;
+  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Stack(
@@ -99,18 +103,103 @@ class _DetailPageState extends State<DetailPage> {
                     SizedBox(
                       height: 10,
                     ),
+                    Row(
+                      children: [
+                        Wrap(
+                          children: List.generate(5, (index) {
+                            return Icon(
+                              Icons.star,
+                              color: index < rating
+                                  ? Color.fromRGBO(255, 232, 26, 1)
+                                  : Colors.grey,
+                            );
+                          }),
+                        ),
+                        SizedBox(width: 5),
+                        AppText(text: '5.0 (23 Reviews)'),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    LargeText(
+                      text: 'People',
+                      fontSize: 22,
+                      color: Colors.black87,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    AppText(
+                      text: 'Number Of People in your group',
+                      color: Colors.grey,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Wrap(
                       children: List.generate(5, (index) {
-                        return Icon(
-                          Icons.star,
-                          color: Colors.orange,
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: DetailSmallContainers(
+                            size: 50,
+                            borderColor: selectedIndex == index
+                                ? Colors.black
+                                : Colors.grey,
+                            backgroundColor: selectedIndex == index
+                                ? Colors.black
+                                : Colors.grey.shade400,
+                            color: selectedIndex == index
+                                ? Colors.white
+                                : Colors.black54,
+                            text: (index + 1).toString(),
+                          ),
                         );
                       }),
-                    )
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    LargeText(
+                      text: 'Description',
+                      fontSize: 22,
+                      color: Colors.black87,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    AppText(
+                      text:
+                          'Travelling is the best one can do on the lobby for fun just to enjoy the nature of the world',
+                      color: Colors.grey,
+                    ),
                   ],
                 ),
               ),
             ),
+            Positioned(
+                bottom: 20,
+                left: 20,
+                right: 20,
+                child: Row(
+                  children: [
+                    DetailSmallContainers(
+                      size: 60,
+                      borderColor: Colors.grey,
+                      backgroundColor: Colors.white,
+                      color: Colors.grey,
+                      icon: Icons.favorite_outline,
+                      isIcon: true,
+                    ),
+                    ResponsiveButton(
+                      isResponsive: true,
+                    )
+                  ],
+                ))
           ],
         ),
       ),

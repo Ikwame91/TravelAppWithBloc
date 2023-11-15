@@ -21,7 +21,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
   };
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 3, vsync: this);
+    TabController tabController = TabController(length: 3, vsync: this);
 
     return Scaffold(
       body: ListView(
@@ -29,35 +29,33 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 70,
-                    left: 20,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.menu,
-                        size: 35,
-                        color: Colors.black,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey.withOpacity(0.3),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/travelllers.jpg'),
-                            fit: BoxFit.cover,
-                          ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 70,
+                  left: 20,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.menu,
+                      size: 35,
+                      color: Colors.black,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 20),
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey.withOpacity(0.3),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/travelllers.jpg'),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
@@ -70,7 +68,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
               SizedBox(
                 height: 40,
               ),
-              Container(
+              SizedBox(
                 height: 100,
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -79,7 +77,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                         TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     labelPadding:
                         EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    controller: _tabController,
+                    controller: tabController,
                     unselectedLabelColor: Color(0xFF9E9E9E),
                     isScrollable: true,
                     indicatorSize: TabBarIndicatorSize.label,
@@ -98,7 +96,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                 height: 300,
                 width: double.maxFinite,
                 child: TabBarView(
-                  controller: _tabController,
+                  controller: tabController,
                   children: [
                     TabContent(imagePath: 'assets/images/man.jpg'),
                     TabContent(imagePath: 'assets/images/beautifulroom.jpg'),
@@ -130,7 +128,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
               SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 300,
                 width: double.maxFinite,
                 child: ListView.builder(
