@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travelappwithbloc/cubit/cubit/app_cubit_cubit.dart';
 import 'package:travelappwithbloc/pages/widget/app_text.dart';
 import 'package:travelappwithbloc/pages/widget/responsive_button.dart';
 import 'package:travelappwithbloc/pages/widget/text_widget.dart';
@@ -80,8 +82,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       SizedBox(
                         height: 40,
                       ),
-                      ResponsiveButton(
-                        width: 110,
+                      GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<AppCubitCubit>(context).getData();
+                        },
+                        child: ResponsiveButton(
+                          width: 150,
+                        ),
                       )
                     ],
                   ),
