@@ -22,9 +22,9 @@ final class LoadingState extends AppCubitState {
 }
 
 final class LoadedState extends AppCubitState {
-  LoadedState(this.places);
-  final List<DataModel> places;
+  // LoadedState(this.places);
+  // final List<DataModel> places;
   @override
   // TODO: implement props
-  List<Object?> get props => [places];
+  List<Object?> get props => [];
 }

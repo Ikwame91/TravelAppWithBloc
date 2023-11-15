@@ -23,7 +23,7 @@ class _AppCubitLogicState extends State<AppCubitLogic> {
           return Center(child: CircularProgressIndicator());
         }
         if (state is LoadedState) {
-          return Homepage();
+          return const Homepage();
         } else {
           return Container();
         }
