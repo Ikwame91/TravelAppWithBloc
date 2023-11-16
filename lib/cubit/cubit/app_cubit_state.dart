@@ -28,3 +28,12 @@ final class LoadedState extends AppCubitState {
   // TODO: implement props
   List<Object?> get props => [];
 }
+
+class DetailState extends AppCubitState {
+  final List<String> discoverImage;
+
+  DetailState(this.discoverImage);
+
+  @override
+  List<Object?> get props => [discoverImage];
+}

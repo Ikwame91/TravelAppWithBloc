@@ -12,25 +12,27 @@ class ResponsiveButton extends StatelessWidget {
   double? width;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: isResponsive == false ? width : double.maxFinite,
-      height: 60,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.blue.shade900,
-      ),
-      child: Row(
-        mainAxisAlignment: isResponsive == false
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.spaceEvenly,
-        children: [
-          isResponsive == true
-              ? AppText(text: 'Book To Trip Now', color: Colors.white)
-              : Container(),
-          Icon(Icons.arrow_forward_ios),
-          Icon(Icons.arrow_forward_ios),
-          Icon(Icons.arrow_forward_ios),
-        ],
+    return Flexible(
+      child: Container(
+        width: isResponsive == false ? width : double.maxFinite,
+        height: 60,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.blue.shade900,
+        ),
+        child: Row(
+          mainAxisAlignment: isResponsive == false
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.spaceEvenly,
+          children: [
+            isResponsive == true
+                ? AppText(text: 'Book To Trip Now', color: Colors.white)
+                : Container(),
+            Icon(Icons.arrow_forward_ios),
+            Icon(Icons.arrow_forward_ios),
+            Icon(Icons.arrow_forward_ios),
+          ],
+        ),
       ),
     );
   }
